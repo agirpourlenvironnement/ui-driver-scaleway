@@ -25,9 +25,22 @@ define('shared/components/node-driver/driver-%%DRIVERNAME%%/component', ['export
     bootstrap: function() {
       let config = get(this, 'globalStore').createRecord({
         type: '%%DRIVERNAME%%Config',
-        cpuCount: 2,
-        memorySize: 2048,
+        commercialType: 'VC1S',
+        region: '',
+        name: '',
+        debug: false,
+        image: 'ubuntu-xenial',
+        ip: '',
+        ipv6: false,
+        organization: '',
+        token: '',
+        volumes: ''
       });
+      let type = 'host';
+
+      if (!this.get('useHost')) {
+        type = 'machine';
+      }
 
       set(this, 'model.%%DRIVERNAME%%Config', config);
     },
@@ -37,16 +50,21 @@ define('shared/components/node-driver/driver-%%DRIVERNAME%%/component', ['export
       // Get generic API validation errors
       this._super();
       var errors = get(this, 'errors')||[];
-      if ( !get(this, 'model.name') ) {
-        errors.push('Name is required');
+      
+      if (!get(this, 'model.commercialType') ) {
+        errors.push('Specifying a Instance Type is required');
       }
 
-      // Add more specific errors
+      if (!get('model.organization') ) {
+        errors.push('Specifying a Organization is required');
+      }
 
-      // Check something and add an error entry if it fails:
-      if ( parseInt(get(this, 'config.memorySize'),10) < 1024 )
-      {
-        errors.push('Memory Size must be at least 1024 MB');
+      if (!get('model.token') ) {
+        errors.push('Specifying a Token is required');
+      }
+
+      if (!get('model.image') ) {
+        errors.push('Specifying a Image is required');
       }
 
       // Set the array of errors for display,
