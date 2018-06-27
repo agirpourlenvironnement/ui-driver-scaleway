@@ -25,8 +25,8 @@ define('shared/components/node-driver/driver-scaleway/component', ['exports', 'e
     bootstrap: function() {
       let config = get(this, 'globalStore').createRecord({
         type: 'scalewayConfig',
-        commercialType: 'VC1S',
-        region: '',
+        commercialType: 'START1-S',
+        region: 'par1',
         name: '',
         debug: false,
         image: 'ubuntu-xenial',
@@ -51,20 +51,20 @@ define('shared/components/node-driver/driver-scaleway/component', ['exports', 'e
       this._super();
       var errors = get(this, 'errors')||[];
       
-      if (!get(this, 'model.commercialType') ) {
-        errors.push('Specifying a Instance Type is required');
+      if (!get(this, 'model.scalewayConfig.commercialType') ) {
+        errors.push('Specifying an Instance Type is required');
       }
 
-      if (!get('model.organization') ) {
-        errors.push('Specifying a Organization is required');
+      if (!get(this, 'model.scalewayConfig.organization') ) {
+        errors.push('Specifying an Organization is required');
       }
 
-      if (!get('model.token') ) {
+      if (!get(this, 'model.scalewayConfig.token') ) {
         errors.push('Specifying a Token is required');
       }
 
-      if (!get('model.image') ) {
-        errors.push('Specifying a Image is required');
+      if (!get(this, 'model.scalewayConfig.image') ) {
+        errors.push('Specifying an Image is required');
       }
 
       // Set the array of errors for display,

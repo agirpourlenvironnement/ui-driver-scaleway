@@ -25,8 +25,8 @@ define('shared/components/node-driver/driver-%%DRIVERNAME%%/component', ['export
     bootstrap: function() {
       let config = get(this, 'globalStore').createRecord({
         type: '%%DRIVERNAME%%Config',
-        commercialType: 'VC1S',
-        region: '',
+        commercialType: 'START1-S',
+        region: 'par1',
         name: '',
         debug: false,
         image: 'ubuntu-xenial',
@@ -51,20 +51,20 @@ define('shared/components/node-driver/driver-%%DRIVERNAME%%/component', ['export
       this._super();
       var errors = get(this, 'errors')||[];
       
-      if (!get(this, 'model.commercialType') ) {
-        errors.push('Specifying a Instance Type is required');
+      if (!get(this, 'model.%%DRIVERNAME%%Config.commercialType') ) {
+        errors.push('Specifying an Instance Type is required');
       }
 
-      if (!get('model.organization') ) {
-        errors.push('Specifying a Organization is required');
+      if (!get(this, 'model.%%DRIVERNAME%%Config.organization') ) {
+        errors.push('Specifying an Organization is required');
       }
 
-      if (!get('model.token') ) {
+      if (!get(this, 'model.%%DRIVERNAME%%Config.token') ) {
         errors.push('Specifying a Token is required');
       }
 
-      if (!get('model.image') ) {
-        errors.push('Specifying a Image is required');
+      if (!get(this, 'model.%%DRIVERNAME%%Config.image') ) {
+        errors.push('Specifying an Image is required');
       }
 
       // Set the array of errors for display,
