@@ -23,5 +23,6 @@ For other users to see your driver, you need to build it and host the output on 
   * Name: Your `scaleway`.
   * Download URL: `https://github.com/scaleway/docker-machine-driver-scaleway/releases/download/v1.3/docker-machine-driver-scaleway_1.3_linux_amd64.tar.gz`
   * Custom UI URL: `https://agirpourlenvironnement.github.io/ui-driver-scaleway/dist/component.js`
+  * Whitelist Domains: `agirpourlenvironnement.github.io`
 * Wait for the driver to become "Active"
 * Go to Clusters -> Add Cluster, your driver and custom UI should show up.
