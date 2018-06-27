@@ -1,10 +1,10 @@
 {
   "name": "ui-driver-scaleway",
   "version": "0.0.2",
-  "description": "Skeleton Rancher UI driver for custom docker-machine drivers",
+  "description": "Rancher UI driver for Scaleway docker-machine drivers",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rancher/ui-driver-skel.git"
+    "url": "git+https://github.com/agirpourlenvironnement/ui-driver-scaleway.git"
   },
   "author": "Rancher Labs, Inc.",
   "license": "Apache-2.0",
@@ -17,7 +17,7 @@
     "build": "./node_modules/.bin/gulp build",
     "upload": "./scripts/upload"
   },
-  "homepage": "https://github.com/rancher/ui-driver-skel#readme",
+  "homepage": "https://github.com/agirpourlenvironnement/ui-driver-scaleway#readme",
   "devDependencies": {
     "del": "3.0.0",
     "gulp": "3.9.1",
