@@ -7,7 +7,7 @@ define('ui/components/node-driver/driver-%%DRIVERNAME%%/component', ['exports', 
 define('shared/components/node-driver/driver-%%DRIVERNAME%%/component', ['exports', 'ember', 'shared/mixins/node-driver', 'shared/components/node-driver/driver-%%DRIVERNAME%%/template'], function (exports, _ember, _uiMixinsDriver, _template) {
 /* ^--- And here */
 
-  // You can put embmer object here
+  // You can put ember object here
   var computed = Ember.computed;
   var get = Ember.get;
   var set = Ember.set;
@@ -23,6 +23,8 @@ define('shared/components/node-driver/driver-%%DRIVERNAME%%/component', ['export
 
     // Write your component here, starting with setting 'model' to a machine with your config populated
     bootstrap: function() {
+      const registerDisplayLocation = _uiMixinsDriver.registerDisplayLocation;
+      const registerDisplaySize = _uiMixinsDriver.registerDisplaySize;
       let config = get(this, 'globalStore').createRecord({
         type: '%%DRIVERNAME%%Config',
         commercialType: 'START1-S',
@@ -42,6 +44,9 @@ define('shared/components/node-driver/driver-%%DRIVERNAME%%/component', ['export
         type = 'machine';
       }
 
+      registerDisplayLocation('%%DRIVERNAME%%', '%%DRIVERNAME%%Config.region');
+      registerDisplaySize('%%DRIVERNAME%%', '%%DRIVERNAME%%Config.commercialType');
+
       set(this, 'model.%%DRIVERNAME%%Config', config);
     },
 
@@ -53,6 +58,10 @@ define('shared/components/node-driver/driver-%%DRIVERNAME%%/component', ['export
       
       if (!get(this, 'model.%%DRIVERNAME%%Config.commercialType') ) {
         errors.push('Specifying an Instance Type is required');
+      }
+      
+      if (!get(this, 'model.%%DRIVERNAME%%Config.region') ) {
+        errors.push('Specifying an Region is required');
       }
 
       if (!get(this, 'model.%%DRIVERNAME%%Config.organization') ) {
@@ -81,6 +90,5 @@ define('shared/components/node-driver/driver-%%DRIVERNAME%%/component', ['export
       }
     },
 
-    // Any computed properties or custom logic can go here
   });
 });
